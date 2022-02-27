@@ -10,34 +10,38 @@ let productQuantity = prompt ('***TIENDA DE DANI***\nIngrese número de producto
 let productsWithDiscount = 0;
 let subtotal = 0;
 let discount = 0;
+let res = iteracion(productQuantity);
+
+function iteracion(pr){
+    for (let i = 1; i <= productQuantity ; i++ ){
+        let productPrice = parseInt(prompt ('Ingrese precio del producto N°' + i));
+        subtotal = productPrice + subtotal;
+     
+        if (productPrice >= 200){
+            productsWithDiscount = productsWithDiscount +  1
+            alert('Llevas ' + productsWithDiscount + ' con descuento');
+            discount = calculateDiscountByPrice(productPrice) + discount;
+        }
+        else {
+            alert('Producto sin descuento, llevas ' + productsWithDiscount + ' con descuento');
+        }
+    }
+    return 
+}
 
 const calculateIva = price => price * 0.19;
 
 const calculateTotal = (priceSt, priceD) => priceSt - priceD;
 
-for (let i = 1; i <= productQuantity ; i++ ){
-    let productPrice = parseInt(prompt ('Ingrese precio del producto N°' + i));
-    subtotal = productPrice + subtotal;
- 
-    if (productPrice >= 200){
-        productsWithDiscount = productsWithDiscount +  1
-        alert('Llevas ' + productsWithDiscount + ' con descuento');
-        discount = calculateDiscountByPrice(productPrice) + discount;
-    }
-    else {
-        alert('Producto sin descuento, llevas ' + productsWithDiscount + ' con descuento');
-    }
+function calculateDiscountByPrice(price){
+    let result = price * 0.05
+    return result
 }
 
 console.log('Descuento del producto ' + discount);
 
 alert ('***DETALLE DE LA COMPRA***\n Subtotal: ' + subtotal + '\n IVA: ' + calculateIva(subtotal) + 
 '\n Productos con descuento: ' +productsWithDiscount + '\n Descuento: ' + discount + '\n Total: ' + calculateTotal(subtotal,discount)); 
-
-function calculateDiscountByPrice(price){
-    let result = price * 0.05
-    return result
-}
 
 
 

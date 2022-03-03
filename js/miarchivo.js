@@ -10,7 +10,7 @@ let productQuantity = prompt ('***TIENDA DE DANI***\nIngrese número de producto
 let productsWithDiscount = 0;
 let subtotal = 0;
 let discount = 0;
-let res = iteracion(productQuantity);
+iteracion(productQuantity);
 
 function iteracion(pr){
     for (let i = 1; i <= productQuantity ; i++ ){
